@@ -10,7 +10,7 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const entry = MpvueEntry.getEntry('./src/pages.js')
+const entry = MpvueEntry.getEntry('./src/app.json')
 
 module.exports = {
   entry,
@@ -47,6 +47,11 @@ module.exports = {
         test: /\.vue$/,
         loader: 'mpvue-loader',
         options: vueLoaderConfig
+      },
+      {
+        test: /\.vue$/,
+        loader: 'mpvue-config-loader',
+        exclude: [resolve('src/components')]
       },
       {
         test: /\.js$/,

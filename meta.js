@@ -24,7 +24,7 @@ module.exports = {
       "type": "string",
       "required": false,
       "message": "Project description",
-      "default": "A Mpvue project"
+      "default": "A MPVue project"
     },
     "author": {
       "type": "string",
@@ -33,6 +33,10 @@ module.exports = {
     "vuex": {
       "type": "confirm",
       "message": "Use Vuex?"
+    },
+    "router": {
+      "type": "confirm",
+      "message": "Use MPVueRouterPatch?"
     },
     "lint": {
       "type": "confirm",

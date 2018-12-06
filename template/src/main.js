@@ -1,9 +1,15 @@
 import Vue from 'vue'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{#router}}
+import MpvueRouterPatch from 'mpvue-router-patch'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/router}}
 import App from '@/App'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{#vuex}}
 import store from '@/store'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 {{/vuex}}
 
+{{#router}}
+Vue.use(MpvueRouterPatch){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+{{/router}}
 Vue.config.productionTip = false{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 const app = new Vue({

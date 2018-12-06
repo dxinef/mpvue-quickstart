@@ -18,9 +18,10 @@
     "babel-core": "^6.26.0",
     "mpvue-config-loader": "^0.0.3",
     "mpvue-entry": "next",
-    "mpvue-loader": "^1.1.2",
-    "mpvue-webpack-target": "^1.0.0",
+    "mpvue-loader": "^1.1.2",{{#router}}
+    "mpvue-router-patch": "^0.2.0",{{/router}}
     "mpvue-template-compiler": "^1.0.0",
+    "mpvue-webpack-target": "^1.0.0",
     "postcss-loader": "^2.1.0",
     "postcss-mpvue-wxss": "^1.0.0",
     "prettier": "~1.12.0",

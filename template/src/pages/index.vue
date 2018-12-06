@@ -42,7 +42,12 @@ export default {
   methods: {
     bindViewTap{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
       const url = '/packageA/logs'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      {{#if router}}
+      this.$router.push(url){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      {{/if}}
+      {{#if_eq router false}}
       wx.navigateTo({ url }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      {{/if_eq}}
     },
     getUserInfo{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
       // 调用登录接口

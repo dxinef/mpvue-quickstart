@@ -99,6 +99,13 @@ module.exports = {
         to: path.resolve(__dirname, '../dist/static'),
         ignore: ['.*']
       }
-    ])
+    ]){{#vant}},
+    new CopyWebpackPlugin([
+      {
+        from: resolve('node_modules/vant-weapp/dist'),
+        to: resolve('dist/static/vant-weapp/dist'),
+        ignore: ['.*']
+      }
+    ]){{/vant}}
   ]
 }

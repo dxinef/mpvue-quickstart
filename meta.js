@@ -38,6 +38,10 @@ module.exports = {
       "type": "confirm",
       "message": "Use MPVueRouterPatch?"
     },
+    "vant": {
+      "type": "confirm",
+      "message": "Use VantWeapp Components?"
+    },
     "lint": {
       "type": "confirm",
       "message": "Use ESLint to lint your code?"

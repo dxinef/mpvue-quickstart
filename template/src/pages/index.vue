@@ -8,6 +8,13 @@
       </div>
     </div>
 
+    {{#vant}}
+    <van-tag>标签</van-tag>
+    <van-tag type="danger">标签</van-tag>
+    <van-tag type="primary">标签</van-tag>
+    <van-tag type="success">标签</van-tag>
+    {{/vant}}
+
     <div class="usermotto">
       <div class="user-motto">
         <card :text="motto"></card>
@@ -28,6 +35,8 @@
 import card from '@/components/card'{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 
 export default {
+  mpType: 'page',
+
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
       motto: 'Hello World',
@@ -92,9 +101,11 @@ export default {
   color: #aaa;
 }
 
+{{#if_eq vant false}}
 .usermotto {
   margin-top: 150px;
 }
+{{/if_eq}}
 
 .form-control {
   display: block;

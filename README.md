@@ -2,6 +2,8 @@
 
 > fork 自 [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack) 修改而来
 
+![tree](https://user-images.githubusercontent.com/16759376/49718032-d80e2d80-fc93-11e8-93f2-fd3e60596590.jpg)
+
 ## 基本用法
 
 ``` bash

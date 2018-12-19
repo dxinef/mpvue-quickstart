@@ -34,7 +34,7 @@ module.exports = {
   },
   module: {
     rules: [
-      {{ #lint }}
+      {{#lint}}
       {
         test: /\.(js|vue)$/,
         loader: 'eslint-loader',

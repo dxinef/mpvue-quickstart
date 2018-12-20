@@ -3,7 +3,7 @@ export default {
   {{#vant}}
   globalConfig: {
     usingComponents: {
-      'van-tag': '/static/vant-weapp/dist/tag/index'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      'van-tag': 'vant-weapp/dist/tag/index'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
   },
   {{/vant}}

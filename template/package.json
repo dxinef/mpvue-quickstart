@@ -11,19 +11,17 @@
     "lint": "eslint --ext .js,.vue src"{{/lint}}
   },
   "dependencies": {
-    "mpvue": "^1.0.0"{{#vant}},
-    "vant-weapp": "^0.4.0"{{/vant}}{{#vuex}},
+    "mpvue": "^2.0.0"{{#router}},
+    "mpvue-router-patch": "^2.0.0"{{/router}}{{#vant}},
+    "vant-weapp": "^0.5.0"{{/vant}}{{#vuex}},
     "vuex": "^3.0.0"{{/vuex}}
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
     "mpvue-config-loader": "^0.1.0",
     "mpvue-entry": "next",
-    "mpvue-loader": "^1.1.2",
-    {{#router}}
-    "mpvue-router-patch": "^0.2.0",
-    {{/router}}
-    "mpvue-template-compiler": "^1.0.0",
+    "mpvue-loader": "^2.0.0",
+    "mpvue-template-compiler": "^2.0.0",
     "mpvue-webpack-target": "^1.0.0",
     "postcss-loader": "^2.1.0",
     "postcss-mpvue-wxss": "^1.0.0",

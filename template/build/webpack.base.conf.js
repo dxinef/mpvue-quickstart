@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const MpvuePlugin = require('webpack-mpvue-asset-plugin')
 const MpvueEntry = require('mpvue-entry')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
@@ -19,8 +20,8 @@ module.exports = {
     path: config.build.assetsRoot,
     filename: '[name].js',
     publicPath: process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
@@ -93,6 +94,10 @@ module.exports = {
   plugins: [
     new MpvuePlugin(),
     new MpvueEntry(),
+    new webpack.DefinePlugin({
+      'mpvue': 'wx',
+      'mpvuePlatform': 'wx'
+    }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

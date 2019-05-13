@@ -48,11 +48,17 @@ module.exports = {
     },
     "csspreprocessor": {
       "type": "list",
+      "message": "Use CSS preprocessor?",
       "choices": [
         {
           "name": "less",
           "value": "less",
           "short": "less"
+        },
+        {
+          "name": "sass/scss",
+          "value": "sass",
+          "short": "sass"
         },
         {
           "name": "none",

@@ -111,6 +111,10 @@ module.exports = {
         to: resolve('dist/vant-weapp/dist'),
         ignore: ['.*']
       }
-    ]){{/vant}}
+    ]){{/vant}}{{#megaloapi}},
+    new webpack.ProvidePlugin({
+      'Megalo': ['@megalo/api/platforms/wechat', 'default']
+    })
+    {{/megaloapi}}
   ]
 }

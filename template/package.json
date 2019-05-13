@@ -14,7 +14,8 @@
     "mpvue": "^2.0.0"{{#router}},
     "mpvue-router-patch": "^2.0.0"{{/router}}{{#vant}},
     "vant-weapp": "^0.5.0"{{/vant}}{{#vuex}},
-    "vuex": "^3.0.0"{{/vuex}}
+    "vuex": "^3.0.0"{{/vuex}}{{#megaloapi}},
+    "@megalo/api": "^0.5.2"{{/megaloapi}}
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -26,7 +27,6 @@
     "postcss-loader": "^2.1.0",
     "postcss-mpvue-wxss": "^1.0.0",
     "prettier": "~1.12.0",
-    "px2rpx-loader": "^0.1.0",
     {{#lint}}
     "babel-eslint": "^8.2.0",
     {{/lint}}

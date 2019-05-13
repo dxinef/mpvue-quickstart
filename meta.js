@@ -42,6 +42,25 @@ module.exports = {
       "type": "confirm",
       "message": "Use VantWeapp Components?"
     },
+    "megaloapi": {
+      "type": "confirm",
+      "message": "Use Megalo Api?"
+    },
+    "csspreprocessor": {
+      "type": "list",
+      "choices": [
+        {
+          "name": "less",
+          "value": "less",
+          "short": "less"
+        },
+        {
+          "name": "none",
+          "value": "none",
+          "short": "none"
+        }
+      ]
+    },
     "lint": {
       "type": "confirm",
       "message": "Use ESLint to lint your code?"

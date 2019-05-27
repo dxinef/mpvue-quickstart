@@ -9,15 +9,34 @@ export default {
   {{/vant}}
   created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     // 调用API从本地缓存中获取数据
-    const logs = wx.getStorageSync('logs') || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    logs.unshift(Date.now()){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-    wx.setStorageSync('logs', logs){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-
+    /*
+     * 平台 api 差异的处理方式:  api 方法统一挂载到 mpvue 名称空间, 平台判断通过 mpvuePlatform 特征字符串
+     * 微信：mpvue === wx, mpvuePlatform === 'wx'
+     * 头条：mpvue === tt, mpvuePlatform === 'tt'
+     * 百度：mpvue === swan, mpvuePlatform === 'swan'
+     * 支付宝(蚂蚁)：mpvue === my, mpvuePlatform === 'my'
+     */
+    let logs{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    if (mpvuePlatform === 'my') {
+      logs = mpvue.getStorageSync({key: 'logs'}).data || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      logs.unshift(Date.now()){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      mpvue.setStorageSync({
+        key: 'logs',
+        data: logs
+      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    } else {
+      logs = mpvue.getStorageSync('logs') || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      logs.unshift(Date.now()){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      mpvue.setStorageSync('logs', logs){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }
     {{#lint}}
     // eslint-disable-next-line
     {{/lint}}
     console.log('app created and cache logs by setStorageSync'){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-  }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+  },
+  log{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
+    console.log(`log at:${Date.now()}`){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+  }
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>
 

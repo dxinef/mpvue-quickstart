@@ -28,7 +28,12 @@ export default {
   },
 
   created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
-    const logs = (wx.getStorageSync('logs') || []){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    let logs{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    if (mpvuePlatform === 'my') {
+      logs = mpvue.getStorageSync({key: 'logs'}).data || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    } else {
+      logs = mpvue.getStorageSync('logs') || []{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+    }
     this.logs = logs.map(log => formatTime(new Date(log))){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}

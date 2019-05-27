@@ -40,7 +40,10 @@ export default {
   data{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
     return {
       motto: 'Hello World',
-      userInfo: {}{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      userInfo: {
+        nickName: 'mpvue',
+        avatarUrl: 'http://mpvue.com/assets/logo.png'{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
+      }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
     }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
   },
 
@@ -55,20 +58,8 @@ export default {
       this.$router.push(url){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       {{/if}}
       {{#if_eq router false}}
-      wx.navigateTo({ url }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+      mpvue.navigateTo({ url }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
       {{/if_eq}}
-    },
-    getUserInfo{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
-      // 调用登录接口
-      wx.login({
-        success: () => {
-          wx.getUserInfo({
-            success: (res) => {
-              this.userInfo = res.userInfo{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-            }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-          }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
-        }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
-      }){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
     },
     clickHandle{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}(msg, ev) {
       {{#lint}}
@@ -79,8 +70,7 @@ export default {
   },
 
   created{{#unless_eq lintConfig "airbnb"}} {{/unless_eq}}() {
-    // 调用应用实例的方法获取全局数据
-    this.getUserInfo(){{#if_eq lintConfig "airbnb"}};{{/if_eq}}
+
   }{{#if_eq lintConfig "airbnb"}},{{/if_eq}}
 }{{#if_eq lintConfig "airbnb"}};{{/if_eq}}
 </script>

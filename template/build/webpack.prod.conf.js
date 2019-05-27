@@ -7,7 +7,7 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const utils = require('./utils')
 const config = require('../config')
 const baseWebpackConfig = require('./webpack.base.conf')
-
+const MpvueVendorPlugin = require('webpack-mpvue-vendor-plugin')
 const env = config.build.env
 
 const webpackConfig = merge(baseWebpackConfig, {
@@ -33,7 +33,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }),
     // extract css into its own file
     new ExtractTextPlugin({
-      filename: utils.assetsPath('[name].wxss')
+      filename: utils.assetsPath(`[name].${config.build.fileExt.style}`)
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
@@ -62,6 +62,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       name: 'common/manifest',
       chunks: ['common/vendor']
     }),
+    new MpvueVendorPlugin({
+      platform: process.env.PLATFORM
+    })
   ]
 })
 

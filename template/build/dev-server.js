@@ -1,5 +1,7 @@
 require('./check-versions')()
 
+process.env.PLATFORM = process.argv[process.argv.length - 1] || 'wx'
+
 const webpack = require('webpack')
 const hardDisk = require('webpack-dev-middleware-hard-disk')
 const config = require('../config')

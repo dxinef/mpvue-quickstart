@@ -11,6 +11,16 @@ function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
+const megaloapiModulePath = (function (platform) {
+  const map = {
+    wx: 'wechat',
+    my: 'alipay',
+    swan: 'swan',
+    tt: 'toutiao'
+  }
+  return path.resolve('@megalo/api/platforms', map[platform])
+})(process.env.PLATFORM)
+
 const entry = MpvueEntry.getEntry('./src/app.json')
 
 module.exports = {
@@ -95,20 +105,21 @@ module.exports = {
     new MpvuePlugin(),
     new MpvueEntry(),
     new webpack.DefinePlugin({
-      'mpvue': 'wx',
-      'mpvuePlatform': 'wx'
+      'mpvue': process.env.PLATFORM,
+      'mpvuePlatform': 'global.mpvuePlatform'
     }),
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
-        to: path.resolve(__dirname, '../dist/static'),
+        to: path.resolve(config.build.assetsRoot, './static'),
         ignore: ['.*']
       }
     ]){{#vant}},
     new CopyWebpackPlugin([
       {
         from: resolve('node_modules/vant-weapp/dist'),
-        to: resolve('dist/vant-weapp/dist'),
+        // to: resolve('dist/vant-weapp/dist'),
+        to: path.resolve(config.build.assetsRoot, './vant-weapp/dist'),
         ignore: ['.*']
       }
     ]){{/vant}}{{#megaloapi}},
